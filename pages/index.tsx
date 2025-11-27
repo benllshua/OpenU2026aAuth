@@ -1,17 +1,17 @@
-import { Flex } from '@chakra-ui/react';
-import type { GetServerSidePropsContext, NextPage } from 'next';
-import { getSession } from 'next-auth/react';
-import Head from 'next/head';
-import Form from '../components/form';
+import { Flex } from "@chakra-ui/react";
+import type { GetServerSidePropsContext, NextPage } from "next";
+import { getSession } from "next-auth/react";
+import Head from "next/head";
+import Form from "../components/form";
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <Flex
-      w={'100%'}
-      h={'100vh'}
-      justifyContent={'center'}
-      alignItems={'center'}
-      my={{ base: '75px', md: '0' }}
+      w={"100%"}
+      h={"100vh"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      my={{ base: "75px", md: "0" }}
     >
       <Head>
         <title>Sign In | Create an Account</title>
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       <Form />
     </Flex>
   );
-};
+}
 
 //@ts-ignore
 export const getServerSideProps: GetServerSideProps = async (
@@ -32,8 +32,8 @@ export const getServerSideProps: GetServerSideProps = async (
   if (session) {
     return {
       redirect: {
-        destination: '/profile',
-        permananet: false,
+        destination: "/profile",
+        permanent: false,
       },
     };
   }
@@ -42,5 +42,3 @@ export const getServerSideProps: GetServerSideProps = async (
     props: { session },
   };
 };
-
-export default Home;
